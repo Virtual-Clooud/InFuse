@@ -1,23 +1,21 @@
 extends Player
-
-export var speed = 300
-export var jump_force = 500
-export var gravity = 10
+#Inventário do jogador
 export var cache = {#"NomeElemento" : "Nome", Qtd, Cor tema
-0 : ["Red", 0, Color(1, 0, 0)],
-1 : ["Blue", 0, Color(0, 1, 0,0)],
-2 : ["Green", 0, Color(0, 0, 1)] 
-}
+	0 : ["Red", 0, Color(1, 0, 0)],
+	1 : ["Blue", 0, Color(0, 1, 0,0)],
+	2 : ["Green", 0, Color(0, 0, 1)] 
+	}
+
 var currentElement = 0
-var total_elements : int = cache.size()
-var fused = true
+var total_elements = cache.size()
 
-
-
+func _ready():
+	total_elements = cache.size()
 func red_fuse():
+	#Functionality
 	var s = $Sprite.get_material()
-	s.set_shader_param("outline_color_2", cache[currentElement][2])
-	s.set_shader_param("outline_color", cache[currentElement][2])
+	#Visuals
+
 func change_element():
 	if currentElement < total_elements:
 		currentElement += 1
@@ -26,20 +24,17 @@ func change_element():
 	print(currentElement)
 func fuse(element):
 	match element:
-		0:
+		0:#Red
 			red_fuse()
-		1:
+		1:#Blue
 			pass
-		2:
+		2:#Green
 			pass
 	print(cache.size())
-func _ready():
-	total_elements = cache.size()
- 
+
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("fuse"):
 		fuse(currentElement)
 	if Input.is_action_just_pressed("change_element"):
 		change_element()
-	move(speed, jump_force, gravity)
-
