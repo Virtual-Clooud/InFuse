@@ -1,5 +1,6 @@
 extends Weapon
 
+onready var tween = $Tween
 # What to do when idle
 func idle():
 	pass
@@ -8,7 +9,6 @@ func prepare():
 	# Fuse weapon
 	if Input.is_action_pressed("fuse") and can_fuse:
 		if already_fused == false:
-			print("HAND FUSE")
 			already_fused = true
 		else:
 			pass
@@ -23,10 +23,18 @@ func active():
 			2:
 				pass
 	else:
-		#Default attack
-		pass
-	already_fused = false
+		tween.interpolate_property($Sprite, "position", 
+		$Sprite.position, Vector2(200, 0), 0.5, Tween.TRANS_BOUNCE)
+		tween.start()
+		
 
+		
+		print("hand_punch")
+		#Default attack
+		
+	already_fused = false
+func guard():
+	pass
 func _physics_process(delta):
 	match state:
 		"idle":

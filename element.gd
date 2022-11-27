@@ -11,7 +11,7 @@ signal collect(element, qtd)
 
 func _physics_process(delta):
 	if chase_player:
-		linear_velocity = Vector2(100,100).rotated(get_angle_to(
+		linear_velocity = Vector2(100,0).rotated(get_angle_to(
 			player.position))
 func _ready():
 	randomize()
@@ -22,7 +22,6 @@ func _ready():
 	
 	var color = cache[int(element)][2]
 	qtd = rand_range(1, player.get("qtdmin") - 1)
-	print(round(qtd))
 
 func _on_detect_area_entered(area):
 	if area.is_in_group("player"):

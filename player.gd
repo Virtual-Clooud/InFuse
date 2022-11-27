@@ -40,7 +40,6 @@ func _physics_process(delta):
 	if Input.is_action_pressed("primaria") == false and Input.is_action_pressed("secundaria") == false and Input.is_action_pressed("terciaria") == false:
 		if Input.is_action_just_pressed("fuse"):
 			fuse(currentElement)
-			print("PLAYER fuse")
 	if Input.is_action_just_pressed("change_element"):
 		change_element()
 	valid_fuse()
