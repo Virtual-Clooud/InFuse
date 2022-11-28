@@ -1,6 +1,13 @@
 extends Weapon
 
 onready var tween = $Tween
+func default_punch():
+	#SISTEMA DE ANIMAÇÃO PROCEDURAL TWEEN, GG
+	var tween = create_tween()
+	tween.tween_property($Sprite, "position", Vector2(100, 200), 1)
+	tween.tween_property($Sprite, "position", Vector2(500, 200), 1)
+	tween.tween_property($Sprite, "position", Vector2(0, 0), 1)
+
 # What to do when idle
 func idle():
 	pass
@@ -23,13 +30,7 @@ func active():
 			2:
 				pass
 	else:
-		tween.interpolate_property($Sprite, "position", 
-		$Sprite.position, Vector2(200, 0), 0.5, Tween.TRANS_BOUNCE)
-		tween.start()
-		
-
-		
-		print("hand_punch")
+		default_punch()
 		#Default attack
 		
 	already_fused = false

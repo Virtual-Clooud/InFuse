@@ -51,7 +51,6 @@ scale = Vector2( 1.42857, 1.42857 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hand/Sprite/hit_area"]
 position = Vector2( -2.5, 3.8147e-06 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="hand"]

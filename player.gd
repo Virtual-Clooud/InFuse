@@ -36,10 +36,11 @@ func fuse(element):
 				pass
 
 func _physics_process(delta):
+	valid_fuse()
 	move(speed, jump_force)
 	if Input.is_action_pressed("primaria") == false and Input.is_action_pressed("secundaria") == false and Input.is_action_pressed("terciaria") == false:
 		if Input.is_action_just_pressed("fuse"):
 			fuse(currentElement)
 	if Input.is_action_just_pressed("change_element"):
 		change_element()
-	valid_fuse()
+	
